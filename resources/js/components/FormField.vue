@@ -13,6 +13,7 @@
                 :style.checked="this.field.color ? 'color:' +  this.field.color :  'color:#3AB95A;'"
                 :placeholder="field.name"
                 v-model="value"
+                v-bind:true-value="1" v-bind:false-value="0"
             />
         </template>
     </DefaultField>
