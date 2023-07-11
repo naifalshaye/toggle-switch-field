@@ -1,0 +1,42 @@
+{
+    "name": "naif/toggle-switch-field",
+    "description": "A Toggle Switch Field for Nova 4.",
+    "keywords": [
+        "laravel",
+        "nova4",
+        "field",
+        "fields",
+        "toggle",
+        "switch",
+        "toggle-switch"
+
+    ],
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "laravel/nova": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Naif\\ToggleSwitchField\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Naif\\ToggleSwitchField\\FieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
