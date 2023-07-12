@@ -9,9 +9,16 @@
         "toggle",
         "switch",
         "toggle-switch"
-
     ],
+    "homepage": "https://github.com/naifalshaye/toggle-switch-field",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Naif Alshaye",
+            "email": "naif@naif.io",
+            "homepage": "https://www.naif.io"
+        }
+    ],
     "repositories": [
         {
             "type": "composer",
