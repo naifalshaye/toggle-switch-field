@@ -23,12 +23,12 @@ $table->boolean('toggle')->nullable()->default(true);
 ```
 Add the field to Nova Resource
 
+You can set the toggle switch color by color code.
 ```
-  public function tools()
+  public function fields(NovaRequest $request)
     {
-    # You can set the toggle switch color by color code.
         return [
-            new ToggleSwitchField::make('toggle')->color('#3AB95A'),
+            ToggleSwitchField::make('Toggle')->color('#3AB95A'),
         ];
     }
 ```
