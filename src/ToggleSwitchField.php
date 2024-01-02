@@ -13,6 +13,14 @@ class ToggleSwitchField extends Field
      */
     public $component = 'toggle-switch-field';
 
+    public function toggleAlign($align = 'left')
+    {
+        $align = 'text-'.$align;
+        return $this->withMeta([
+            'toggle_align' => $align
+        ]);
+    }
+
     public function color($color)
     {
         if (isset($color)) {
@@ -26,5 +34,12 @@ class ToggleSwitchField extends Field
                 'color' => '#3AB95A'
             ]);
         }
+    }
+
+    public function indexToggle($show)
+    {
+        return $this->withMeta([
+            'index_toggle' => $show
+        ]);
     }
 }
