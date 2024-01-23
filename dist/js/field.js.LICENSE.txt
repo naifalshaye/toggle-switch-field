@@ -1,5 +1,0 @@
-/*!
- * vuex v4.1.0
- * (c) 2022 Evan You
- * @license MIT
- */
