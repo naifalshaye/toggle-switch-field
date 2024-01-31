@@ -30,16 +30,30 @@ export default {
         /*
          * Set the initial, internal value for the field.
          */
+
         setInitialValue() {
-            this.value = this.field.value || 0
+            var field_value = false;
+            if (this.field.value === '1' || this.field.value === 1 || this.field.value === true){
+                field_value = 1;
+            } else{
+                field_value = 0;
+            }
+            this.value = field_value || 0
         },
 
         /**
          * Fill the given FormData object with the field's internal value.
          */
         fill(formData) {
-            formData.append(this.fieldAttribute, this.value || 0)
+            var field_value = false;
+            if (this.value === '1' || this.value === 1 || this.value === true){
+                field_value = 1;
+            } else{
+                field_value = 0;
+            }
+            formData.append(this.fieldAttribute, field_value || 0)
         },
+
     },
 }
 </script>
