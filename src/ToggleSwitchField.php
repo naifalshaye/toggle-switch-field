@@ -42,4 +42,11 @@ class ToggleSwitchField extends Field
             'index_toggle' => $show
         ]);
     }
+
+    public function detailToggle($show)
+    {
+        return $this->withMeta([
+            'detail_toggle' => $show
+        ]);
+    }
 }
