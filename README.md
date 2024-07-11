@@ -25,8 +25,12 @@ composer require naif/toggle-switch-field
 
 Table column migration
 ```
-$table->boolean('toggle')->nullable()->default(true);
+$table->boolean('toggle')->default(true);
 ```
+
+#### * Add toggle fields to $fillable in Model
+
+
 Add the field to Nova Resource
 ```
   public function fields(NovaRequest $request)

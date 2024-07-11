@@ -13,6 +13,7 @@
                 :style.checked="this.field.color ? 'color:' +  this.field.color :  'color:#3AB95A;'"
                 :placeholder="field.name"
                 v-model="value"
+                v-bind:true-value="1" v-bind:false-value="0"
 
             />
         </template>
@@ -51,7 +52,7 @@ export default {
             } else {
                 field_value = 0;
             }
-            formData.append(this.fieldAttribute, Boolean(field_value) || 0)
+            formData.append(this.fieldAttribute, field_value || 0)
         },
 
     },

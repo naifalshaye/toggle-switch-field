@@ -81,7 +81,7 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         field_value = 0;
       }
-      formData.append(this.fieldAttribute, Boolean(field_value) || 0);
+      formData.append(this.fieldAttribute, field_value || 0);
     }
   }
 });
@@ -246,7 +246,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         placeholder: $props.field.name,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return _ctx.value = $event;
-        })
+        }),
+        "true-value": 1,
+        "false-value": 0
       }, null, 12 /* STYLE, PROPS */, _hoisted_1), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.value]])];
     }),
     _: 1 /* STABLE */
@@ -454,8 +456,8 @@ __webpack_require__.r(__webpack_exports__);
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 
@@ -662,21 +664,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _util_filled__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/filled */ "../../vendor/laravel/nova/resources/js/util/filled.js");
-/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/isArray */ "../../vendor/laravel/nova/node_modules/lodash/isArray.js");
-/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isArray__WEBPACK_IMPORTED_MODULE_1__);
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['field'],
-  methods: {
-    isEqualsToValue: function isEqualsToValue(value) {
-      var _this$field$value, _this$field$value2;
-      if (lodash_isArray__WEBPACK_IMPORTED_MODULE_1___default()(this.field.value) && (0,_util_filled__WEBPACK_IMPORTED_MODULE_0__["default"])(value)) {
-        return Boolean(this.field.value.includes(value) || this.field.value.includes(value.toString()));
-      }
-      return Boolean(this.field.value === value || ((_this$field$value = this.field.value) === null || _this$field$value === void 0 ? void 0 : _this$field$value.toString()) === value || this.field.value === (value === null || value === void 0 ? void 0 : value.toString()) || ((_this$field$value2 = this.field.value) === null || _this$field$value2 === void 0 ? void 0 : _this$field$value2.toString()) === (value === null || value === void 0 ? void 0 : value.toString()));
-    }
-  },
   computed: {
     fieldAttribute: function fieldAttribute() {
       return this.field.attribute;
@@ -796,8 +786,8 @@ __webpack_require__.r(__webpack_exports__);
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 
@@ -930,15 +920,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isNil__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _propTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./propTypes */ "../../vendor/laravel/nova/resources/js/mixins/propTypes.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _toArray(r) { return _arrayWithHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableRest(); }
+function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
 
@@ -1298,9 +1288,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_filter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/filter */ "../../vendor/laravel/nova/node_modules/lodash/filter.js");
 /* harmony import */ var lodash_filter__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_filter__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -1454,8 +1444,8 @@ __webpack_require__.r(__webpack_exports__);
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 
@@ -1592,8 +1582,8 @@ __webpack_require__.r(__webpack_exports__);
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -1909,13 +1899,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _DetailField_vue_vue_type_template_id_0224618e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DetailField.vue?vue&type=template&id=0224618e */ "./resources/js/components/DetailField.vue?vue&type=template&id=0224618e");
 /* harmony import */ var _DetailField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DetailField.vue?vue&type=script&lang=js */ "./resources/js/components/DetailField.vue?vue&type=script&lang=js");
-/* harmony import */ var _Users_user_code_nova4_nova_components_ToggleSwitchField_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _Users_user_code_nova4_nova_components_toggle4_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_Users_user_code_nova4_nova_components_ToggleSwitchField_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DetailField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DetailField_vue_vue_type_template_id_0224618e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/DetailField.vue"]])
+const __exports__ = /*#__PURE__*/(0,_Users_user_code_nova4_nova_components_toggle4_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DetailField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DetailField_vue_vue_type_template_id_0224618e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/DetailField.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1937,13 +1927,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _FormField_vue_vue_type_template_id_c023248a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormField.vue?vue&type=template&id=c023248a */ "./resources/js/components/FormField.vue?vue&type=template&id=c023248a");
 /* harmony import */ var _FormField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormField.vue?vue&type=script&lang=js */ "./resources/js/components/FormField.vue?vue&type=script&lang=js");
-/* harmony import */ var _Users_user_code_nova4_nova_components_ToggleSwitchField_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _Users_user_code_nova4_nova_components_toggle4_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_Users_user_code_nova4_nova_components_ToggleSwitchField_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_FormField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_FormField_vue_vue_type_template_id_c023248a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/FormField.vue"]])
+const __exports__ = /*#__PURE__*/(0,_Users_user_code_nova4_nova_components_toggle4_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_FormField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_FormField_vue_vue_type_template_id_c023248a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/FormField.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1965,13 +1955,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _IndexField_vue_vue_type_template_id_9e63f81a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IndexField.vue?vue&type=template&id=9e63f81a */ "./resources/js/components/IndexField.vue?vue&type=template&id=9e63f81a");
 /* harmony import */ var _IndexField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IndexField.vue?vue&type=script&lang=js */ "./resources/js/components/IndexField.vue?vue&type=script&lang=js");
-/* harmony import */ var _Users_user_code_nova4_nova_components_ToggleSwitchField_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _Users_user_code_nova4_nova_components_toggle4_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_Users_user_code_nova4_nova_components_ToggleSwitchField_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_IndexField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_IndexField_vue_vue_type_template_id_9e63f81a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/IndexField.vue"]])
+const __exports__ = /*#__PURE__*/(0,_Users_user_code_nova4_nova_components_toggle4_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_IndexField_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_IndexField_vue_vue_type_template_id_9e63f81a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/IndexField.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -2114,30 +2104,15 @@ var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "../../vendor/la
 var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/buildFullPath.js");
 var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/parseHeaders.js");
 var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/isURLSameOrigin.js");
-var transitionalDefaults = __webpack_require__(/*! ../defaults/transitional */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults/transitional.js");
-var AxiosError = __webpack_require__(/*! ../core/AxiosError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/AxiosError.js");
-var CanceledError = __webpack_require__(/*! ../cancel/CanceledError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/CanceledError.js");
-var parseProtocol = __webpack_require__(/*! ../helpers/parseProtocol */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/parseProtocol.js");
-var platform = __webpack_require__(/*! ../platform */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/index.js");
+var createError = __webpack_require__(/*! ../core/createError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/createError.js");
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
     var requestData = config.data;
     var requestHeaders = config.headers;
     var responseType = config.responseType;
-    var withXSRFToken = config.withXSRFToken;
-    var onCanceled;
-    function done() {
-      if (config.cancelToken) {
-        config.cancelToken.unsubscribe(onCanceled);
-      }
 
-      if (config.signal) {
-        config.signal.removeEventListener('abort', onCanceled);
-      }
-    }
-
-    if (utils.isFormData(requestData) && utils.isStandardBrowserEnv()) {
+    if (utils.isFormData(requestData)) {
       delete requestHeaders['Content-Type']; // Let the browser set it
     }
 
@@ -2151,7 +2126,6 @@ module.exports = function xhrAdapter(config) {
     }
 
     var fullPath = buildFullPath(config.baseURL, config.url);
-
     request.open(config.method.toUpperCase(), buildURL(fullPath, config.params, config.paramsSerializer), true);
 
     // Set the request timeout in MS
@@ -2174,13 +2148,7 @@ module.exports = function xhrAdapter(config) {
         request: request
       };
 
-      settle(function _resolve(value) {
-        resolve(value);
-        done();
-      }, function _reject(err) {
-        reject(err);
-        done();
-      }, response);
+      settle(resolve, reject, response);
 
       // Clean up request
       request = null;
@@ -2215,7 +2183,7 @@ module.exports = function xhrAdapter(config) {
         return;
       }
 
-      reject(new AxiosError('Request aborted', AxiosError.ECONNABORTED, config, request));
+      reject(createError('Request aborted', config, 'ECONNABORTED', request));
 
       // Clean up request
       request = null;
@@ -2225,7 +2193,7 @@ module.exports = function xhrAdapter(config) {
     request.onerror = function handleError() {
       // Real errors are hidden from us by the browser
       // onerror should only fire if it's a network error
-      reject(new AxiosError('Network Error', AxiosError.ERR_NETWORK, config, request));
+      reject(createError('Network Error', config, null, request));
 
       // Clean up request
       request = null;
@@ -2233,15 +2201,14 @@ module.exports = function xhrAdapter(config) {
 
     // Handle timeout
     request.ontimeout = function handleTimeout() {
-      var timeoutErrorMessage = config.timeout ? 'timeout of ' + config.timeout + 'ms exceeded' : 'timeout exceeded';
-      var transitional = config.transitional || transitionalDefaults;
+      var timeoutErrorMessage = 'timeout of ' + config.timeout + 'ms exceeded';
       if (config.timeoutErrorMessage) {
         timeoutErrorMessage = config.timeoutErrorMessage;
       }
-      reject(new AxiosError(
+      reject(createError(
         timeoutErrorMessage,
-        transitional.clarifyTimeoutError ? AxiosError.ETIMEDOUT : AxiosError.ECONNABORTED,
         config,
+        config.transitional && config.transitional.clarifyTimeoutError ? 'ETIMEDOUT' : 'ECONNABORTED',
         request));
 
       // Clean up request
@@ -2253,13 +2220,12 @@ module.exports = function xhrAdapter(config) {
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
       // Add xsrf header
-      withXSRFToken && utils.isFunction(withXSRFToken) && (withXSRFToken = withXSRFToken(config));
-      if (withXSRFToken || (withXSRFToken !== false && isURLSameOrigin(fullPath))) {
-        // Add xsrf header
-        var xsrfValue = config.xsrfHeaderName && config.xsrfCookieName && cookies.read(config.xsrfCookieName);
-        if (xsrfValue) {
-          requestHeaders[config.xsrfHeaderName] = xsrfValue;
-        }
+      var xsrfValue = (config.withCredentials || isURLSameOrigin(fullPath)) && config.xsrfCookieName ?
+        cookies.read(config.xsrfCookieName) :
+        undefined;
+
+      if (xsrfValue) {
+        requestHeaders[config.xsrfHeaderName] = xsrfValue;
       }
     }
 
@@ -2296,36 +2262,23 @@ module.exports = function xhrAdapter(config) {
       request.upload.addEventListener('progress', config.onUploadProgress);
     }
 
-    if (config.cancelToken || config.signal) {
+    if (config.cancelToken) {
       // Handle cancellation
-      // eslint-disable-next-line func-names
-      onCanceled = function(cancel) {
+      config.cancelToken.promise.then(function onCanceled(cancel) {
         if (!request) {
           return;
         }
-        reject(!cancel || cancel.type ? new CanceledError(null, config, request) : cancel);
-        request.abort();
-        request = null;
-      };
 
-      config.cancelToken && config.cancelToken.subscribe(onCanceled);
-      if (config.signal) {
-        config.signal.aborted ? onCanceled() : config.signal.addEventListener('abort', onCanceled);
-      }
+        request.abort();
+        reject(cancel);
+        // Clean up request
+        request = null;
+      });
     }
 
-    // false, 0 (zero number), and '' (empty string) are valid JSON values
-    if (!requestData && requestData !== false && requestData !== 0 && requestData !== '') {
+    if (!requestData) {
       requestData = null;
     }
-
-    var protocol = parseProtocol(fullPath);
-
-    if (protocol && platform.protocols.indexOf(protocol) === -1) {
-      reject(new AxiosError('Unsupported protocol ' + protocol + ':', AxiosError.ERR_BAD_REQUEST, config));
-      return;
-    }
-
 
     // Send the request
     request.send(requestData);
@@ -2348,8 +2301,8 @@ var utils = __webpack_require__(/*! ./utils */ "../../vendor/laravel/nova/node_m
 var bind = __webpack_require__(/*! ./helpers/bind */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/bind.js");
 var Axios = __webpack_require__(/*! ./core/Axios */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/Axios.js");
 var mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/mergeConfig.js");
-var defaults = __webpack_require__(/*! ./defaults */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults/index.js");
-var formDataToJSON = __webpack_require__(/*! ./helpers/formDataToJSON */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/formDataToJSON.js");
+var defaults = __webpack_require__(/*! ./defaults */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults.js");
+
 /**
  * Create an instance of Axios
  *
@@ -2366,11 +2319,6 @@ function createInstance(defaultConfig) {
   // Copy context to instance
   utils.extend(instance, context);
 
-  // Factory for creating new instances
-  instance.create = function create(instanceConfig) {
-    return createInstance(mergeConfig(defaultConfig, instanceConfig));
-  };
-
   return instance;
 }
 
@@ -2380,18 +2328,15 @@ var axios = createInstance(defaults);
 // Expose Axios class to allow class inheritance
 axios.Axios = Axios;
 
+// Factory for creating new instances
+axios.create = function create(instanceConfig) {
+  return createInstance(mergeConfig(axios.defaults, instanceConfig));
+};
+
 // Expose Cancel & CancelToken
-axios.CanceledError = __webpack_require__(/*! ./cancel/CanceledError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/CanceledError.js");
+axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/Cancel.js");
 axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/CancelToken.js");
 axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/isCancel.js");
-axios.VERSION = (__webpack_require__(/*! ./env/data */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/env/data.js").version);
-axios.toFormData = __webpack_require__(/*! ./helpers/toFormData */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/toFormData.js");
-
-// Expose AxiosError class
-axios.AxiosError = __webpack_require__(/*! ../lib/core/AxiosError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/AxiosError.js");
-
-// alias for CanceledError for backward compatibility
-axios.Cancel = axios.CanceledError;
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -2402,14 +2347,40 @@ axios.spread = __webpack_require__(/*! ./helpers/spread */ "../../vendor/laravel
 // Expose isAxiosError
 axios.isAxiosError = __webpack_require__(/*! ./helpers/isAxiosError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/isAxiosError.js");
 
-axios.formToJSON = function(thing) {
-  return formDataToJSON(utils.isHTMLForm(thing) ? new FormData(thing) : thing);
-};
-
 module.exports = axios;
 
 // Allow use of default import syntax in TypeScript
 module.exports["default"] = axios;
+
+
+/***/ }),
+
+/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/Cancel.js":
+/*!*********************************************************************************************************!*\
+  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/Cancel.js ***!
+  \*********************************************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/**
+ * A `Cancel` is an object that is thrown when an operation is canceled.
+ *
+ * @class
+ * @param {string=} message The message.
+ */
+function Cancel(message) {
+  this.message = message;
+}
+
+Cancel.prototype.toString = function toString() {
+  return 'Cancel' + (this.message ? ': ' + this.message : '');
+};
+
+Cancel.prototype.__CANCEL__ = true;
+
+module.exports = Cancel;
 
 
 /***/ }),
@@ -2423,7 +2394,7 @@ module.exports["default"] = axios;
 "use strict";
 
 
-var CanceledError = __webpack_require__(/*! ./CanceledError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/CanceledError.js");
+var Cancel = __webpack_require__(/*! ./Cancel */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/Cancel.js");
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -2437,89 +2408,28 @@ function CancelToken(executor) {
   }
 
   var resolvePromise;
-
   this.promise = new Promise(function promiseExecutor(resolve) {
     resolvePromise = resolve;
   });
 
   var token = this;
-
-  // eslint-disable-next-line func-names
-  this.promise.then(function(cancel) {
-    if (!token._listeners) return;
-
-    var i = token._listeners.length;
-
-    while (i-- > 0) {
-      token._listeners[i](cancel);
-    }
-    token._listeners = null;
-  });
-
-  // eslint-disable-next-line func-names
-  this.promise.then = function(onfulfilled) {
-    var _resolve;
-    // eslint-disable-next-line func-names
-    var promise = new Promise(function(resolve) {
-      token.subscribe(resolve);
-      _resolve = resolve;
-    }).then(onfulfilled);
-
-    promise.cancel = function reject() {
-      token.unsubscribe(_resolve);
-    };
-
-    return promise;
-  };
-
-  executor(function cancel(message, config, request) {
+  executor(function cancel(message) {
     if (token.reason) {
       // Cancellation has already been requested
       return;
     }
 
-    token.reason = new CanceledError(message, config, request);
+    token.reason = new Cancel(message);
     resolvePromise(token.reason);
   });
 }
 
 /**
- * Throws a `CanceledError` if cancellation has been requested.
+ * Throws a `Cancel` if cancellation has been requested.
  */
 CancelToken.prototype.throwIfRequested = function throwIfRequested() {
   if (this.reason) {
     throw this.reason;
-  }
-};
-
-/**
- * Subscribe to the cancel signal
- */
-
-CancelToken.prototype.subscribe = function subscribe(listener) {
-  if (this.reason) {
-    listener(this.reason);
-    return;
-  }
-
-  if (this._listeners) {
-    this._listeners.push(listener);
-  } else {
-    this._listeners = [listener];
-  }
-};
-
-/**
- * Unsubscribe from the cancel signal
- */
-
-CancelToken.prototype.unsubscribe = function unsubscribe(listener) {
-  if (!this._listeners) {
-    return;
-  }
-  var index = this._listeners.indexOf(listener);
-  if (index !== -1) {
-    this._listeners.splice(index, 1);
   }
 };
 
@@ -2539,41 +2449,6 @@ CancelToken.source = function source() {
 };
 
 module.exports = CancelToken;
-
-
-/***/ }),
-
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/CanceledError.js":
-/*!****************************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/CanceledError.js ***!
-  \****************************************************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-var AxiosError = __webpack_require__(/*! ../core/AxiosError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/AxiosError.js");
-var utils = __webpack_require__(/*! ../utils */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/utils.js");
-
-/**
- * A `CanceledError` is an object that is thrown when an operation is canceled.
- *
- * @class
- * @param {string=} message The message.
- * @param {Object=} config The config.
- * @param {Object=} request The request.
- */
-function CanceledError(message, config, request) {
-  // eslint-disable-next-line no-eq-null,eqeqeq
-  AxiosError.call(this, message == null ? 'canceled' : message, AxiosError.ERR_CANCELED, config, request);
-  this.name = 'CanceledError';
-}
-
-utils.inherits(CanceledError, AxiosError, {
-  __CANCEL__: true
-});
-
-module.exports = CanceledError;
 
 
 /***/ }),
@@ -2608,7 +2483,6 @@ var buildURL = __webpack_require__(/*! ../helpers/buildURL */ "../../vendor/lara
 var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/InterceptorManager.js");
 var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/dispatchRequest.js");
 var mergeConfig = __webpack_require__(/*! ./mergeConfig */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/mergeConfig.js");
-var buildFullPath = __webpack_require__(/*! ./buildFullPath */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/buildFullPath.js");
 var validator = __webpack_require__(/*! ../helpers/validator */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/validator.js");
 
 var validators = validator.validators;
@@ -2628,17 +2502,16 @@ function Axios(instanceConfig) {
 /**
  * Dispatch a request
  *
- * @param {String|Object} configOrUrl The config specific for this request (merged with this.defaults)
- * @param {?Object} config
+ * @param {Object} config The config specific for this request (merged with this.defaults)
  */
-Axios.prototype.request = function request(configOrUrl, config) {
+Axios.prototype.request = function request(config) {
   /*eslint no-param-reassign:0*/
   // Allow for axios('example/url'[, config]) a la fetch API
-  if (typeof configOrUrl === 'string') {
-    config = config || {};
-    config.url = configOrUrl;
+  if (typeof config === 'string') {
+    config = arguments[1] || {};
+    config.url = arguments[0];
   } else {
-    config = configOrUrl || {};
+    config = config || {};
   }
 
   config = mergeConfig(this.defaults, config);
@@ -2656,22 +2529,11 @@ Axios.prototype.request = function request(configOrUrl, config) {
 
   if (transitional !== undefined) {
     validator.assertOptions(transitional, {
-      silentJSONParsing: validators.transitional(validators.boolean),
-      forcedJSONParsing: validators.transitional(validators.boolean),
-      clarifyTimeoutError: validators.transitional(validators.boolean)
+      silentJSONParsing: validators.transitional(validators.boolean, '1.0.0'),
+      forcedJSONParsing: validators.transitional(validators.boolean, '1.0.0'),
+      clarifyTimeoutError: validators.transitional(validators.boolean, '1.0.0')
     }, false);
   }
-
-  var paramsSerializer = config.paramsSerializer;
-
-  if (paramsSerializer !== undefined) {
-    validator.assertOptions(paramsSerializer, {
-      encode: validators.function,
-      serialize: validators.function
-    }, true);
-  }
-
-  utils.isFunction(paramsSerializer) && (config.paramsSerializer = {serialize: paramsSerializer});
 
   // filter out skipped interceptors
   var requestInterceptorChain = [];
@@ -2735,8 +2597,7 @@ Axios.prototype.request = function request(configOrUrl, config) {
 
 Axios.prototype.getUri = function getUri(config) {
   config = mergeConfig(this.defaults, config);
-  var fullPath = buildFullPath(config.baseURL, config.url);
-  return buildURL(fullPath, config.params, config.paramsSerializer);
+  return buildURL(config.url, config.params, config.paramsSerializer).replace(/^\?/, '');
 };
 
 // Provide aliases for supported request methods
@@ -2753,134 +2614,16 @@ utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData
 
 utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
   /*eslint func-names:0*/
-
-  function generateHTTPMethod(isForm) {
-    return function httpMethod(url, data, config) {
-      return this.request(mergeConfig(config || {}, {
-        method: method,
-        headers: isForm ? {
-          'Content-Type': 'multipart/form-data'
-        } : {},
-        url: url,
-        data: data
-      }));
-    };
-  }
-
-  Axios.prototype[method] = generateHTTPMethod();
-
-  Axios.prototype[method + 'Form'] = generateHTTPMethod(true);
+  Axios.prototype[method] = function(url, data, config) {
+    return this.request(mergeConfig(config || {}, {
+      method: method,
+      url: url,
+      data: data
+    }));
+  };
 });
 
 module.exports = Axios;
-
-
-/***/ }),
-
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/AxiosError.js":
-/*!***********************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/AxiosError.js ***!
-  \***********************************************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ../utils */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/utils.js");
-
-/**
- * Create an Error with the specified message, config, error code, request and response.
- *
- * @param {string} message The error message.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- * @param {Object} [config] The config.
- * @param {Object} [request] The request.
- * @param {Object} [response] The response.
- * @returns {Error} The created error.
- */
-function AxiosError(message, code, config, request, response) {
-  Error.call(this);
-
-  if (Error.captureStackTrace) {
-    Error.captureStackTrace(this, this.constructor);
-  } else {
-    this.stack = (new Error()).stack;
-  }
-
-  this.message = message;
-  this.name = 'AxiosError';
-  code && (this.code = code);
-  config && (this.config = config);
-  request && (this.request = request);
-  response && (this.response = response);
-}
-
-utils.inherits(AxiosError, Error, {
-  toJSON: function toJSON() {
-    return {
-      // Standard
-      message: this.message,
-      name: this.name,
-      // Microsoft
-      description: this.description,
-      number: this.number,
-      // Mozilla
-      fileName: this.fileName,
-      lineNumber: this.lineNumber,
-      columnNumber: this.columnNumber,
-      stack: this.stack,
-      // Axios
-      config: this.config,
-      code: this.code,
-      status: this.response && this.response.status ? this.response.status : null
-    };
-  }
-});
-
-var prototype = AxiosError.prototype;
-var descriptors = {};
-
-[
-  'ERR_BAD_OPTION_VALUE',
-  'ERR_BAD_OPTION',
-  'ECONNABORTED',
-  'ETIMEDOUT',
-  'ERR_NETWORK',
-  'ERR_FR_TOO_MANY_REDIRECTS',
-  'ERR_DEPRECATED',
-  'ERR_BAD_RESPONSE',
-  'ERR_BAD_REQUEST',
-  'ERR_CANCELED',
-  'ERR_NOT_SUPPORT',
-  'ERR_INVALID_URL'
-// eslint-disable-next-line func-names
-].forEach(function(code) {
-  descriptors[code] = {value: code};
-});
-
-Object.defineProperties(AxiosError, descriptors);
-Object.defineProperty(prototype, 'isAxiosError', {value: true});
-
-// eslint-disable-next-line func-names
-AxiosError.from = function(error, code, config, request, response, customProps) {
-  var axiosError = Object.create(prototype);
-
-  utils.toFlatObject(error, axiosError, function filter(obj) {
-    return obj !== Error.prototype;
-  });
-
-  AxiosError.call(axiosError, error.message, code, config, request, response);
-
-  axiosError.cause = error;
-
-  axiosError.name = error.name;
-
-  customProps && Object.assign(axiosError, customProps);
-
-  return axiosError;
-};
-
-module.exports = AxiosError;
 
 
 /***/ }),
@@ -2926,15 +2669,6 @@ InterceptorManager.prototype.use = function use(fulfilled, rejected, options) {
 InterceptorManager.prototype.eject = function eject(id) {
   if (this.handlers[id]) {
     this.handlers[id] = null;
-  }
-};
-
-/**
- * Clear all interceptors from the stack
- */
-InterceptorManager.prototype.clear = function clear() {
-  if (this.handlers) {
-    this.handlers = [];
   }
 };
 
@@ -2990,6 +2724,35 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 
 /***/ }),
 
+/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/createError.js":
+/*!************************************************************************************************************!*\
+  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/createError.js ***!
+  \************************************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var enhanceError = __webpack_require__(/*! ./enhanceError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/enhanceError.js");
+
+/**
+ * Create an Error with the specified message, config, error code, request and response.
+ *
+ * @param {string} message The error message.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The created error.
+ */
+module.exports = function createError(message, config, code, request, response) {
+  var error = new Error(message);
+  return enhanceError(error, config, code, request, response);
+};
+
+
+/***/ }),
+
 /***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/dispatchRequest.js":
 /*!****************************************************************************************************************!*\
   !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/dispatchRequest.js ***!
@@ -3002,20 +2765,14 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 var utils = __webpack_require__(/*! ./../utils */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/utils.js");
 var transformData = __webpack_require__(/*! ./transformData */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/transformData.js");
 var isCancel = __webpack_require__(/*! ../cancel/isCancel */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/isCancel.js");
-var defaults = __webpack_require__(/*! ../defaults */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults/index.js");
-var CanceledError = __webpack_require__(/*! ../cancel/CanceledError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/cancel/CanceledError.js");
-var normalizeHeaderName = __webpack_require__(/*! ../helpers/normalizeHeaderName */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/normalizeHeaderName.js");
+var defaults = __webpack_require__(/*! ../defaults */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults.js");
 
 /**
- * Throws a `CanceledError` if cancellation has been requested.
+ * Throws a `Cancel` if cancellation has been requested.
  */
 function throwIfCancellationRequested(config) {
   if (config.cancelToken) {
     config.cancelToken.throwIfRequested();
-  }
-
-  if (config.signal && config.signal.aborted) {
-    throw new CanceledError();
   }
 }
 
@@ -3036,12 +2793,8 @@ module.exports = function dispatchRequest(config) {
     config,
     config.data,
     config.headers,
-    null,
     config.transformRequest
   );
-
-  normalizeHeaderName(config.headers, 'Accept');
-  normalizeHeaderName(config.headers, 'Content-Type');
 
   // Flatten headers
   config.headers = utils.merge(
@@ -3067,7 +2820,6 @@ module.exports = function dispatchRequest(config) {
       config,
       response.data,
       response.headers,
-      response.status,
       config.transformResponse
     );
 
@@ -3082,7 +2834,6 @@ module.exports = function dispatchRequest(config) {
           config,
           reason.response.data,
           reason.response.headers,
-          reason.response.status,
           config.transformResponse
         );
       }
@@ -3090,6 +2841,59 @@ module.exports = function dispatchRequest(config) {
 
     return Promise.reject(reason);
   });
+};
+
+
+/***/ }),
+
+/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/enhanceError.js":
+/*!*************************************************************************************************************!*\
+  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/enhanceError.js ***!
+  \*************************************************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/**
+ * Update an Error with the specified config, error code, and response.
+ *
+ * @param {Error} error The error to update.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The error.
+ */
+module.exports = function enhanceError(error, config, code, request, response) {
+  error.config = config;
+  if (code) {
+    error.code = code;
+  }
+
+  error.request = request;
+  error.response = response;
+  error.isAxiosError = true;
+
+  error.toJSON = function toJSON() {
+    return {
+      // Standard
+      message: this.message,
+      name: this.name,
+      // Microsoft
+      description: this.description,
+      number: this.number,
+      // Mozilla
+      fileName: this.fileName,
+      lineNumber: this.lineNumber,
+      columnNumber: this.columnNumber,
+      stack: this.stack,
+      // Axios
+      config: this.config,
+      code: this.code
+    };
+  };
+  return error;
 };
 
 
@@ -3119,11 +2923,20 @@ module.exports = function mergeConfig(config1, config2) {
   config2 = config2 || {};
   var config = {};
 
+  var valueFromConfig2Keys = ['url', 'method', 'data'];
+  var mergeDeepPropertiesKeys = ['headers', 'auth', 'proxy', 'params'];
+  var defaultToConfig2Keys = [
+    'baseURL', 'transformRequest', 'transformResponse', 'paramsSerializer',
+    'timeout', 'timeoutMessage', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
+    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress', 'decompress',
+    'maxContentLength', 'maxBodyLength', 'maxRedirects', 'transport', 'httpAgent',
+    'httpsAgent', 'cancelToken', 'socketPath', 'responseEncoding'
+  ];
+  var directMergeKeys = ['validateStatus'];
+
   function getMergedValue(target, source) {
     if (utils.isPlainObject(target) && utils.isPlainObject(source)) {
       return utils.merge(target, source);
-    } else if (utils.isEmptyObject(source)) {
-      return utils.merge({}, target);
     } else if (utils.isPlainObject(source)) {
       return utils.merge({}, source);
     } else if (utils.isArray(source)) {
@@ -3132,76 +2945,51 @@ module.exports = function mergeConfig(config1, config2) {
     return source;
   }
 
-  // eslint-disable-next-line consistent-return
   function mergeDeepProperties(prop) {
     if (!utils.isUndefined(config2[prop])) {
-      return getMergedValue(config1[prop], config2[prop]);
+      config[prop] = getMergedValue(config1[prop], config2[prop]);
     } else if (!utils.isUndefined(config1[prop])) {
-      return getMergedValue(undefined, config1[prop]);
+      config[prop] = getMergedValue(undefined, config1[prop]);
     }
   }
 
-  // eslint-disable-next-line consistent-return
-  function valueFromConfig2(prop) {
+  utils.forEach(valueFromConfig2Keys, function valueFromConfig2(prop) {
     if (!utils.isUndefined(config2[prop])) {
-      return getMergedValue(undefined, config2[prop]);
+      config[prop] = getMergedValue(undefined, config2[prop]);
     }
-  }
-
-  // eslint-disable-next-line consistent-return
-  function defaultToConfig2(prop) {
-    if (!utils.isUndefined(config2[prop])) {
-      return getMergedValue(undefined, config2[prop]);
-    } else if (!utils.isUndefined(config1[prop])) {
-      return getMergedValue(undefined, config1[prop]);
-    }
-  }
-
-  // eslint-disable-next-line consistent-return
-  function mergeDirectKeys(prop) {
-    if (prop in config2) {
-      return getMergedValue(config1[prop], config2[prop]);
-    } else if (prop in config1) {
-      return getMergedValue(undefined, config1[prop]);
-    }
-  }
-
-  var mergeMap = {
-    'url': valueFromConfig2,
-    'method': valueFromConfig2,
-    'data': valueFromConfig2,
-    'baseURL': defaultToConfig2,
-    'transformRequest': defaultToConfig2,
-    'transformResponse': defaultToConfig2,
-    'paramsSerializer': defaultToConfig2,
-    'timeout': defaultToConfig2,
-    'timeoutMessage': defaultToConfig2,
-    'withCredentials': defaultToConfig2,
-    'withXSRFToken': defaultToConfig2,
-    'adapter': defaultToConfig2,
-    'responseType': defaultToConfig2,
-    'xsrfCookieName': defaultToConfig2,
-    'xsrfHeaderName': defaultToConfig2,
-    'onUploadProgress': defaultToConfig2,
-    'onDownloadProgress': defaultToConfig2,
-    'decompress': defaultToConfig2,
-    'maxContentLength': defaultToConfig2,
-    'maxBodyLength': defaultToConfig2,
-    'beforeRedirect': defaultToConfig2,
-    'transport': defaultToConfig2,
-    'httpAgent': defaultToConfig2,
-    'httpsAgent': defaultToConfig2,
-    'cancelToken': defaultToConfig2,
-    'socketPath': defaultToConfig2,
-    'responseEncoding': defaultToConfig2,
-    'validateStatus': mergeDirectKeys
-  };
-
-  utils.forEach(Object.keys(config1).concat(Object.keys(config2)), function computeConfigValue(prop) {
-    var merge = mergeMap[prop] || mergeDeepProperties;
-    var configValue = merge(prop);
-    (utils.isUndefined(configValue) && merge !== mergeDirectKeys) || (config[prop] = configValue);
   });
+
+  utils.forEach(mergeDeepPropertiesKeys, mergeDeepProperties);
+
+  utils.forEach(defaultToConfig2Keys, function defaultToConfig2(prop) {
+    if (!utils.isUndefined(config2[prop])) {
+      config[prop] = getMergedValue(undefined, config2[prop]);
+    } else if (!utils.isUndefined(config1[prop])) {
+      config[prop] = getMergedValue(undefined, config1[prop]);
+    }
+  });
+
+  utils.forEach(directMergeKeys, function merge(prop) {
+    if (prop in config2) {
+      config[prop] = getMergedValue(config1[prop], config2[prop]);
+    } else if (prop in config1) {
+      config[prop] = getMergedValue(undefined, config1[prop]);
+    }
+  });
+
+  var axiosKeys = valueFromConfig2Keys
+    .concat(mergeDeepPropertiesKeys)
+    .concat(defaultToConfig2Keys)
+    .concat(directMergeKeys);
+
+  var otherKeys = Object
+    .keys(config1)
+    .concat(Object.keys(config2))
+    .filter(function filterAxiosKeys(key) {
+      return axiosKeys.indexOf(key) === -1;
+    });
+
+  utils.forEach(otherKeys, mergeDeepProperties);
 
   return config;
 };
@@ -3218,7 +3006,7 @@ module.exports = function mergeConfig(config1, config2) {
 "use strict";
 
 
-var AxiosError = __webpack_require__(/*! ./AxiosError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/AxiosError.js");
+var createError = __webpack_require__(/*! ./createError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/createError.js");
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -3232,10 +3020,10 @@ module.exports = function settle(resolve, reject, response) {
   if (!response.status || !validateStatus || validateStatus(response.status)) {
     resolve(response);
   } else {
-    reject(new AxiosError(
+    reject(createError(
       'Request failed with status code ' + response.status,
-      [AxiosError.ERR_BAD_REQUEST, AxiosError.ERR_BAD_RESPONSE][Math.floor(response.status / 100) - 4],
       response.config,
+      null,
       response.request,
       response
     ));
@@ -3255,22 +3043,21 @@ module.exports = function settle(resolve, reject, response) {
 
 
 var utils = __webpack_require__(/*! ./../utils */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/utils.js");
-var defaults = __webpack_require__(/*! ../defaults */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults/index.js");
+var defaults = __webpack_require__(/*! ./../defaults */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults.js");
 
 /**
  * Transform the data for a request or a response
  *
  * @param {Object|String} data The data to be transformed
  * @param {Array} headers The headers for the request or response
- * @param {Number} status HTTP status code
  * @param {Array|Function} fns A single function or Array of functions
  * @returns {*} The resulting transformed data
  */
-module.exports = function transformData(data, headers, status, fns) {
+module.exports = function transformData(data, headers, fns) {
   var context = this || defaults;
   /*eslint no-param-reassign:0*/
   utils.forEach(fns, function transform(fn) {
-    data = fn.call(context, data, headers, status);
+    data = fn.call(context, data, headers);
   });
 
   return data;
@@ -3279,24 +3066,19 @@ module.exports = function transformData(data, headers, status, fns) {
 
 /***/ }),
 
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults/index.js":
-/*!**********************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults/index.js ***!
-  \**********************************************************************************************************/
+/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults.js":
+/*!****************************************************************************************************!*\
+  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults.js ***!
+  \****************************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 /* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "../../vendor/laravel/nova/node_modules/process/browser.js");
 
 
-var utils = __webpack_require__(/*! ../utils */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/utils.js");
-var normalizeHeaderName = __webpack_require__(/*! ../helpers/normalizeHeaderName */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/normalizeHeaderName.js");
-var AxiosError = __webpack_require__(/*! ../core/AxiosError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/AxiosError.js");
-var transitionalDefaults = __webpack_require__(/*! ./transitional */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults/transitional.js");
-var toFormData = __webpack_require__(/*! ../helpers/toFormData */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/toFormData.js");
-var toURLEncodedForm = __webpack_require__(/*! ../helpers/toURLEncodedForm */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/toURLEncodedForm.js");
-var platform = __webpack_require__(/*! ../platform */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/index.js");
-var formDataToJSON = __webpack_require__(/*! ../helpers/formDataToJSON */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/formDataToJSON.js");
+var utils = __webpack_require__(/*! ./utils */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/utils.js");
+var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/normalizeHeaderName.js");
+var enhanceError = __webpack_require__(/*! ./core/enhanceError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/enhanceError.js");
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -3312,10 +3094,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(/*! ../adapters/xhr */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/adapters/xhr.js");
+    adapter = __webpack_require__(/*! ./adapters/xhr */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/adapters/xhr.js");
   } else if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(/*! ../adapters/http */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/adapters/xhr.js");
+    adapter = __webpack_require__(/*! ./adapters/http */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/adapters/xhr.js");
   }
   return adapter;
 }
@@ -3337,7 +3119,11 @@ function stringifySafely(rawValue, parser, encoder) {
 
 var defaults = {
 
-  transitional: transitionalDefaults,
+  transitional: {
+    silentJSONParsing: true,
+    forcedJSONParsing: true,
+    clarifyTimeoutError: false
+  },
 
   adapter: getDefaultAdapter(),
 
@@ -3345,21 +3131,8 @@ var defaults = {
     normalizeHeaderName(headers, 'Accept');
     normalizeHeaderName(headers, 'Content-Type');
 
-    var contentType = headers && headers['Content-Type'] || '';
-    var hasJSONContentType = contentType.indexOf('application/json') > -1;
-    var isObjectPayload = utils.isObject(data);
-
-    if (isObjectPayload && utils.isHTMLForm(data)) {
-      data = new FormData(data);
-    }
-
-    var isFormData = utils.isFormData(data);
-
-    if (isFormData) {
-      return hasJSONContentType ? JSON.stringify(formDataToJSON(data)) : data;
-    }
-
-    if (utils.isArrayBuffer(data) ||
+    if (utils.isFormData(data) ||
+      utils.isArrayBuffer(data) ||
       utils.isBuffer(data) ||
       utils.isStream(data) ||
       utils.isFile(data) ||
@@ -3374,48 +3147,26 @@ var defaults = {
       setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
       return data.toString();
     }
-
-    var isFileList;
-
-    if (isObjectPayload) {
-      if (contentType.indexOf('application/x-www-form-urlencoded') !== -1) {
-        return toURLEncodedForm(data, this.formSerializer).toString();
-      }
-
-      if ((isFileList = utils.isFileList(data)) || contentType.indexOf('multipart/form-data') > -1) {
-        var _FormData = this.env && this.env.FormData;
-
-        return toFormData(
-          isFileList ? {'files[]': data} : data,
-          _FormData && new _FormData(),
-          this.formSerializer
-        );
-      }
-    }
-
-    if (isObjectPayload || hasJSONContentType ) {
+    if (utils.isObject(data) || (headers && headers['Content-Type'] === 'application/json')) {
       setContentTypeIfUnset(headers, 'application/json');
       return stringifySafely(data);
     }
-
     return data;
   }],
 
   transformResponse: [function transformResponse(data) {
-    var transitional = this.transitional || defaults.transitional;
+    var transitional = this.transitional;
+    var silentJSONParsing = transitional && transitional.silentJSONParsing;
     var forcedJSONParsing = transitional && transitional.forcedJSONParsing;
-    var JSONRequested = this.responseType === 'json';
+    var strictJSONParsing = !silentJSONParsing && this.responseType === 'json';
 
-    if (data && utils.isString(data) && ((forcedJSONParsing && !this.responseType) || JSONRequested)) {
-      var silentJSONParsing = transitional && transitional.silentJSONParsing;
-      var strictJSONParsing = !silentJSONParsing && JSONRequested;
-
+    if (strictJSONParsing || (forcedJSONParsing && utils.isString(data) && data.length)) {
       try {
         return JSON.parse(data);
       } catch (e) {
         if (strictJSONParsing) {
           if (e.name === 'SyntaxError') {
-            throw AxiosError.from(e, AxiosError.ERR_BAD_RESPONSE, this, null, this.response);
+            throw enhanceError(e, this, 'E_JSON_PARSE');
           }
           throw e;
         }
@@ -3437,19 +3188,14 @@ var defaults = {
   maxContentLength: -1,
   maxBodyLength: -1,
 
-  env: {
-    FormData: platform.classes.FormData,
-    Blob: platform.classes.Blob
-  },
-
   validateStatus: function validateStatus(status) {
     return status >= 200 && status < 300;
-  },
+  }
+};
 
-  headers: {
-    common: {
-      'Accept': 'application/json, text/plain, */*'
-    }
+defaults.headers = {
+  common: {
+    'Accept': 'application/json, text/plain, */*'
   }
 };
 
@@ -3466,101 +3212,6 @@ module.exports = defaults;
 
 /***/ }),
 
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults/transitional.js":
-/*!*****************************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/defaults/transitional.js ***!
-  \*****************************************************************************************************************/
-/***/ ((module) => {
-
-"use strict";
-
-
-module.exports = {
-  silentJSONParsing: true,
-  forcedJSONParsing: true,
-  clarifyTimeoutError: false
-};
-
-
-/***/ }),
-
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/env/classes/FormData.js":
-/*!****************************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/env/classes/FormData.js ***!
-  \****************************************************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-// eslint-disable-next-line strict
-module.exports = __webpack_require__(/*! form-data */ "../../vendor/laravel/nova/node_modules/form-data/lib/browser.js");
-
-
-/***/ }),
-
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/env/data.js":
-/*!****************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/env/data.js ***!
-  \****************************************************************************************************/
-/***/ ((module) => {
-
-module.exports = {
-  "version": "0.28.1"
-};
-
-/***/ }),
-
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/AxiosURLSearchParams.js":
-/*!************************************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/AxiosURLSearchParams.js ***!
-  \************************************************************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-var toFormData = __webpack_require__(/*! ./toFormData */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/toFormData.js");
-
-function encode(str) {
-  var charMap = {
-    '!': '%21',
-    "'": '%27',
-    '(': '%28',
-    ')': '%29',
-    '~': '%7E',
-    '%20': '+',
-    '%00': '\x00'
-  };
-  return encodeURIComponent(str).replace(/[!'\(\)~]|%20|%00/g, function replacer(match) {
-    return charMap[match];
-  });
-}
-
-function AxiosURLSearchParams(params, options) {
-  this._pairs = [];
-
-  params && toFormData(params, this, options);
-}
-
-var prototype = AxiosURLSearchParams.prototype;
-
-prototype.append = function append(name, value) {
-  this._pairs.push([name, value]);
-};
-
-prototype.toString = function toString(encoder) {
-  var _encode = encoder ? function(value) {
-    return encoder.call(this, value, encode);
-  } : encode;
-
-  return this._pairs.map(function each(pair) {
-    return _encode(pair[0]) + '=' + _encode(pair[1]);
-  }, '').join('&');
-};
-
-module.exports = AxiosURLSearchParams;
-
-
-/***/ }),
-
 /***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/bind.js":
 /*!********************************************************************************************************!*\
   !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/bind.js ***!
@@ -3572,7 +3223,11 @@ module.exports = AxiosURLSearchParams;
 
 module.exports = function bind(fn, thisArg) {
   return function wrap() {
-    return fn.apply(thisArg, arguments);
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+    return fn.apply(thisArg, args);
   };
 };
 
@@ -3588,8 +3243,7 @@ module.exports = function bind(fn, thisArg) {
 "use strict";
 
 
-var utils = __webpack_require__(/*! ../utils */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/utils.js");
-var AxiosURLSearchParams = __webpack_require__(/*! ../helpers/AxiosURLSearchParams */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/AxiosURLSearchParams.js");
+var utils = __webpack_require__(/*! ./../utils */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/utils.js");
 
 function encode(val) {
   return encodeURIComponent(val).
@@ -3606,36 +3260,52 @@ function encode(val) {
  *
  * @param {string} url The base of the url (e.g., http://www.google.com)
  * @param {object} [params] The params to be appended
- * @param {?object} options
  * @returns {string} The formatted url
  */
-module.exports = function buildURL(url, params, options) {
+module.exports = function buildURL(url, params, paramsSerializer) {
   /*eslint no-param-reassign:0*/
   if (!params) {
     return url;
   }
 
-  var hashmarkIndex = url.indexOf('#');
-
-  if (hashmarkIndex !== -1) {
-    url = url.slice(0, hashmarkIndex);
-  }
-
-  var _encode = options && options.encode || encode;
-
-  var serializeFn = options && options.serialize;
-
   var serializedParams;
-
-  if (serializeFn) {
-    serializedParams = serializeFn(params, options);
+  if (paramsSerializer) {
+    serializedParams = paramsSerializer(params);
+  } else if (utils.isURLSearchParams(params)) {
+    serializedParams = params.toString();
   } else {
-    serializedParams = utils.isURLSearchParams(params) ?
-      params.toString() :
-      new AxiosURLSearchParams(params, options).toString(_encode);
+    var parts = [];
+
+    utils.forEach(params, function serialize(val, key) {
+      if (val === null || typeof val === 'undefined') {
+        return;
+      }
+
+      if (utils.isArray(val)) {
+        key = key + '[]';
+      } else {
+        val = [val];
+      }
+
+      utils.forEach(val, function parseValue(v) {
+        if (utils.isDate(v)) {
+          v = v.toISOString();
+        } else if (utils.isObject(v)) {
+          v = JSON.stringify(v);
+        }
+        parts.push(encode(key) + '=' + encode(v));
+      });
+    });
+
+    serializedParams = parts.join('&');
   }
 
   if (serializedParams) {
+    var hashmarkIndex = url.indexOf('#');
+    if (hashmarkIndex !== -1) {
+      url = url.slice(0, hashmarkIndex);
+    }
+
     url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
   }
 
@@ -3734,88 +3404,6 @@ module.exports = (
 
 /***/ }),
 
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/formDataToJSON.js":
-/*!******************************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/formDataToJSON.js ***!
-  \******************************************************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ../utils */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/utils.js");
-
-function parsePropPath(name) {
-  // foo[x][y][z]
-  // foo.x.y.z
-  // foo-x-y-z
-  // foo x y z
-  return utils.matchAll(/\w+|\[(\w*)]/g, name).map(function(match) {
-    return match[0] === '[]' ? '' : match[1] || match[0];
-  });
-}
-
-function arrayToObject(arr) {
-  var obj = {};
-  var keys = Object.keys(arr);
-  var i;
-  var len = keys.length;
-  var key;
-  for (i = 0; i < len; i++) {
-    key = keys[i];
-    obj[key] = arr[key];
-  }
-  return obj;
-}
-
-function formDataToJSON(formData) {
-  function buildPath(path, value, target, index) {
-    var name = path[index++];
-    var isNumericKey = Number.isFinite(+name);
-    var isLast = index >= path.length;
-    name = !name && utils.isArray(target) ? target.length : name;
-
-    if (isLast) {
-      if (utils.hasOwnProperty(target, name)) {
-        target[name] = [target[name], value];
-      } else {
-        target[name] = value;
-      }
-
-      return !isNumericKey;
-    }
-
-    if (!target[name] || !utils.isObject(target[name])) {
-      target[name] = [];
-    }
-
-    var result = buildPath(path, value, target[name], index);
-
-    if (result && utils.isArray(target[name])) {
-      target[name] = arrayToObject(target[name]);
-    }
-
-    return !isNumericKey;
-  }
-
-  if (utils.isFormData(formData) && utils.isFunction(formData.entries)) {
-    var obj = {};
-
-    utils.forEachEntry(formData, function(name, value) {
-      buildPath(parsePropPath(name), value, obj, 0);
-    });
-
-    return obj;
-  }
-
-  return null;
-}
-
-module.exports = formDataToJSON;
-
-
-/***/ }),
-
 /***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/isAbsoluteURL.js":
 /*!*****************************************************************************************************************!*\
   !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
@@ -3835,7 +3423,7 @@ module.exports = function isAbsoluteURL(url) {
   // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
   // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
   // by any combination of letters, digits, plus, period, or hyphen.
-  return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url);
+  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
 };
 
 
@@ -3845,12 +3433,10 @@ module.exports = function isAbsoluteURL(url) {
 /*!****************************************************************************************************************!*\
   !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/isAxiosError.js ***!
   \****************************************************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module) => {
 
 "use strict";
 
-
-var utils = __webpack_require__(/*! ./../utils */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/utils.js");
 
 /**
  * Determines whether the payload is an error thrown by Axios
@@ -3859,7 +3445,7 @@ var utils = __webpack_require__(/*! ./../utils */ "../../vendor/laravel/nova/nod
  * @returns {boolean} True if the payload is an error thrown by Axios, otherwise false
  */
 module.exports = function isAxiosError(payload) {
-  return utils.isObject(payload) && (payload.isAxiosError === true);
+  return (typeof payload === 'object') && (payload.isAxiosError === true);
 };
 
 
@@ -3887,16 +3473,16 @@ module.exports = (
       var originURL;
 
       /**
-      * Parse a URL to discover it's components
-      *
-      * @param {String} url The URL to be parsed
-      * @returns {Object}
-      */
+    * Parse a URL to discover it's components
+    *
+    * @param {String} url The URL to be parsed
+    * @returns {Object}
+    */
       function resolveURL(url) {
         var href = url;
 
         if (msie) {
-          // IE needs attribute set twice to normalize properties
+        // IE needs attribute set twice to normalize properties
           urlParsingNode.setAttribute('href', href);
           href = urlParsingNode.href;
         }
@@ -3921,11 +3507,11 @@ module.exports = (
       originURL = resolveURL(window.location.href);
 
       /**
-      * Determine if a URL shares the same origin as the current location
-      *
-      * @param {String} requestURL The URL to test
-      * @returns {boolean} True if URL shares the same origin, otherwise false
-      */
+    * Determine if a URL shares the same origin as the current location
+    *
+    * @param {String} requestURL The URL to test
+    * @returns {boolean} True if URL shares the same origin, otherwise false
+    */
       return function isURLSameOrigin(requestURL) {
         var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
         return (parsed.protocol === originURL.protocol &&
@@ -3933,7 +3519,7 @@ module.exports = (
       };
     })() :
 
-    // Non standard browser envs (web workers, react-native) lack needed support.
+  // Non standard browser envs (web workers, react-native) lack needed support.
     (function nonStandardBrowserEnv() {
       return function isURLSameOrigin() {
         return true;
@@ -4010,8 +3596,8 @@ module.exports = function parseHeaders(headers) {
 
   utils.forEach(headers.split('\n'), function parser(line) {
     i = line.indexOf(':');
-    key = utils.trim(line.slice(0, i)).toLowerCase();
-    val = utils.trim(line.slice(i + 1));
+    key = utils.trim(line.substr(0, i)).toLowerCase();
+    val = utils.trim(line.substr(i + 1));
 
     if (key) {
       if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {
@@ -4026,23 +3612,6 @@ module.exports = function parseHeaders(headers) {
   });
 
   return parsed;
-};
-
-
-/***/ }),
-
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/parseProtocol.js":
-/*!*****************************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/parseProtocol.js ***!
-  \*****************************************************************************************************************/
-/***/ ((module) => {
-
-"use strict";
-
-
-module.exports = function parseProtocol(url) {
-  var match = /^([-+\w]{1,25})(:?\/\/|:)/.exec(url);
-  return match && match[1] || '';
 };
 
 
@@ -4086,226 +3655,6 @@ module.exports = function spread(callback) {
 
 /***/ }),
 
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/toFormData.js":
-/*!**************************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/toFormData.js ***!
-  \**************************************************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-/* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "../../vendor/laravel/nova/node_modules/buffer/index.js")["Buffer"];
-
-
-var utils = __webpack_require__(/*! ../utils */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/utils.js");
-var AxiosError = __webpack_require__(/*! ../core/AxiosError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/AxiosError.js");
-var envFormData = __webpack_require__(/*! ../env/classes/FormData */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/env/classes/FormData.js");
-
-function isVisitable(thing) {
-  return utils.isPlainObject(thing) || utils.isArray(thing);
-}
-
-function removeBrackets(key) {
-  return utils.endsWith(key, '[]') ? key.slice(0, -2) : key;
-}
-
-function renderKey(path, key, dots) {
-  if (!path) return key;
-  return path.concat(key).map(function each(token, i) {
-    // eslint-disable-next-line no-param-reassign
-    token = removeBrackets(token);
-    return !dots && i ? '[' + token + ']' : token;
-  }).join(dots ? '.' : '');
-}
-
-function isFlatArray(arr) {
-  return utils.isArray(arr) && !arr.some(isVisitable);
-}
-
-var predicates = utils.toFlatObject(utils, {}, null, function filter(prop) {
-  return /^is[A-Z]/.test(prop);
-});
-
-function isSpecCompliant(thing) {
-  return thing && utils.isFunction(thing.append) && thing[Symbol.toStringTag] === 'FormData' && thing[Symbol.iterator];
-}
-
-/**
- * Convert a data object to FormData
- * @param {Object} obj
- * @param {?Object} [formData]
- * @param {?Object} [options]
- * @param {Function} [options.visitor]
- * @param {Boolean} [options.metaTokens = true]
- * @param {Boolean} [options.dots = false]
- * @param {?Boolean} [options.indexes = false]
- * @returns {Object}
- **/
-
-function toFormData(obj, formData, options) {
-  if (!utils.isObject(obj)) {
-    throw new TypeError('target must be an object');
-  }
-
-  // eslint-disable-next-line no-param-reassign
-  formData = formData || new (envFormData || FormData)();
-
-  // eslint-disable-next-line no-param-reassign
-  options = utils.toFlatObject(options, {
-    metaTokens: true,
-    dots: false,
-    indexes: false
-  }, false, function defined(option, source) {
-    // eslint-disable-next-line no-eq-null,eqeqeq
-    return !utils.isUndefined(source[option]);
-  });
-
-  var metaTokens = options.metaTokens;
-  // eslint-disable-next-line no-use-before-define
-  var visitor = options.visitor || defaultVisitor;
-  var dots = options.dots;
-  var indexes = options.indexes;
-  var _Blob = options.Blob || typeof Blob !== 'undefined' && Blob;
-  var useBlob = _Blob && isSpecCompliant(formData);
-
-  if (!utils.isFunction(visitor)) {
-    throw new TypeError('visitor must be a function');
-  }
-
-  function convertValue(value) {
-    if (value === null) return '';
-
-    if (utils.isDate(value)) {
-      return value.toISOString();
-    }
-
-    if (!useBlob && utils.isBlob(value)) {
-      throw new AxiosError('Blob is not supported. Use a Buffer instead.');
-    }
-
-    if (utils.isArrayBuffer(value) || utils.isTypedArray(value)) {
-      return useBlob && typeof Blob === 'function' ? new Blob([value]) : Buffer.from(value);
-    }
-
-    return value;
-  }
-
-  /**
-   *
-   * @param {*} value
-   * @param {String|Number} key
-   * @param {Array<String|Number>} path
-   * @this {FormData}
-   * @returns {boolean} return true to visit the each prop of the value recursively
-   */
-  function defaultVisitor(value, key, path) {
-    var arr = value;
-
-    if (value && !path && typeof value === 'object') {
-      if (utils.endsWith(key, '{}')) {
-        // eslint-disable-next-line no-param-reassign
-        key = metaTokens ? key : key.slice(0, -2);
-        // eslint-disable-next-line no-param-reassign
-        value = JSON.stringify(value);
-      } else if (
-        (utils.isArray(value) && isFlatArray(value)) ||
-        (utils.isFileList(value) || utils.endsWith(key, '[]') && (arr = utils.toArray(value))
-        )) {
-        // eslint-disable-next-line no-param-reassign
-        key = removeBrackets(key);
-
-        arr.forEach(function each(el, index) {
-          !utils.isUndefined(el) && formData.append(
-            // eslint-disable-next-line no-nested-ternary
-            indexes === true ? renderKey([key], index, dots) : (indexes === null ? key : key + '[]'),
-            convertValue(el)
-          );
-        });
-        return false;
-      }
-    }
-
-    if (isVisitable(value)) {
-      return true;
-    }
-
-    formData.append(renderKey(path, key, dots), convertValue(value));
-
-    return false;
-  }
-
-  var stack = [];
-
-  var exposedHelpers = Object.assign(predicates, {
-    defaultVisitor: defaultVisitor,
-    convertValue: convertValue,
-    isVisitable: isVisitable
-  });
-
-  function build(value, path) {
-    if (utils.isUndefined(value)) return;
-
-    if (stack.indexOf(value) !== -1) {
-      throw Error('Circular reference detected in ' + path.join('.'));
-    }
-
-    stack.push(value);
-
-    utils.forEach(value, function each(el, key) {
-      var result = !utils.isUndefined(el) && visitor.call(
-        formData, el, utils.isString(key) ? key.trim() : key, path, exposedHelpers
-      );
-
-      if (result === true) {
-        build(el, path ? path.concat(key) : [key]);
-      }
-    });
-
-    stack.pop();
-  }
-
-  if (!utils.isObject(obj)) {
-    throw new TypeError('data must be an object');
-  }
-
-  build(obj);
-
-  return formData;
-}
-
-module.exports = toFormData;
-
-
-/***/ }),
-
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/toURLEncodedForm.js":
-/*!********************************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/toURLEncodedForm.js ***!
-  \********************************************************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ../utils */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/utils.js");
-var toFormData = __webpack_require__(/*! ./toFormData */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/toFormData.js");
-var platform = __webpack_require__(/*! ../platform/ */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/index.js");
-
-module.exports = function toURLEncodedForm(data, options) {
-  return toFormData(data, new platform.classes.URLSearchParams(), Object.assign({
-    visitor: function(value, key, path, helpers) {
-      if (platform.isNode && utils.isBuffer(value)) {
-        this.append(key, value.toString('base64'));
-        return false;
-      }
-
-      return helpers.defaultVisitor.apply(this, arguments);
-    }
-  }, options));
-};
-
-
-/***/ }),
-
 /***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/validator.js":
 /*!*************************************************************************************************************!*\
   !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/validator.js ***!
@@ -4315,8 +3664,7 @@ module.exports = function toURLEncodedForm(data, options) {
 "use strict";
 
 
-var VERSION = (__webpack_require__(/*! ../env/data */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/env/data.js").version);
-var AxiosError = __webpack_require__(/*! ../core/AxiosError */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/core/AxiosError.js");
+var pkg = __webpack_require__(/*! ./../../package.json */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/package.json");
 
 var validators = {};
 
@@ -4328,29 +3676,48 @@ var validators = {};
 });
 
 var deprecatedWarnings = {};
+var currentVerArr = pkg.version.split('.');
+
+/**
+ * Compare package versions
+ * @param {string} version
+ * @param {string?} thanVersion
+ * @returns {boolean}
+ */
+function isOlderVersion(version, thanVersion) {
+  var pkgVersionArr = thanVersion ? thanVersion.split('.') : currentVerArr;
+  var destVer = version.split('.');
+  for (var i = 0; i < 3; i++) {
+    if (pkgVersionArr[i] > destVer[i]) {
+      return true;
+    } else if (pkgVersionArr[i] < destVer[i]) {
+      return false;
+    }
+  }
+  return false;
+}
 
 /**
  * Transitional option validator
- * @param {function|boolean?} validator - set to false if the transitional option has been removed
- * @param {string?} version - deprecated version / removed since version
- * @param {string?} message - some message with additional info
+ * @param {function|boolean?} validator
+ * @param {string?} version
+ * @param {string} message
  * @returns {function}
  */
 validators.transitional = function transitional(validator, version, message) {
+  var isDeprecated = version && isOlderVersion(version);
+
   function formatMessage(opt, desc) {
-    return '[Axios v' + VERSION + '] Transitional option \'' + opt + '\'' + desc + (message ? '. ' + message : '');
+    return '[Axios v' + pkg.version + '] Transitional option \'' + opt + '\'' + desc + (message ? '. ' + message : '');
   }
 
   // eslint-disable-next-line func-names
   return function(value, opt, opts) {
     if (validator === false) {
-      throw new AxiosError(
-        formatMessage(opt, ' has been removed' + (version ? ' in ' + version : '')),
-        AxiosError.ERR_DEPRECATED
-      );
+      throw new Error(formatMessage(opt, ' has been removed in ' + version));
     }
 
-    if (version && !deprecatedWarnings[opt]) {
+    if (isDeprecated && !deprecatedWarnings[opt]) {
       deprecatedWarnings[opt] = true;
       // eslint-disable-next-line no-console
       console.warn(
@@ -4374,7 +3741,7 @@ validators.transitional = function transitional(validator, version, message) {
 
 function assertOptions(options, schema, allowUnknown) {
   if (typeof options !== 'object') {
-    throw new AxiosError('options must be an object', AxiosError.ERR_BAD_OPTION_VALUE);
+    throw new TypeError('options must be an object');
   }
   var keys = Object.keys(options);
   var i = keys.length;
@@ -4385,86 +3752,21 @@ function assertOptions(options, schema, allowUnknown) {
       var value = options[opt];
       var result = value === undefined || validator(value, opt, options);
       if (result !== true) {
-        throw new AxiosError('option ' + opt + ' must be ' + result, AxiosError.ERR_BAD_OPTION_VALUE);
+        throw new TypeError('option ' + opt + ' must be ' + result);
       }
       continue;
     }
     if (allowUnknown !== true) {
-      throw new AxiosError('Unknown option ' + opt, AxiosError.ERR_BAD_OPTION);
+      throw Error('Unknown option ' + opt);
     }
   }
 }
 
 module.exports = {
+  isOlderVersion: isOlderVersion,
   assertOptions: assertOptions,
   validators: validators
 };
-
-
-/***/ }),
-
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/browser/classes/FormData.js":
-/*!*****************************************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/browser/classes/FormData.js ***!
-  \*****************************************************************************************************************************/
-/***/ ((module) => {
-
-"use strict";
-
-
-module.exports = FormData;
-
-
-/***/ }),
-
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/browser/classes/URLSearchParams.js":
-/*!************************************************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/browser/classes/URLSearchParams.js ***!
-  \************************************************************************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-var AxiosURLSearchParams = __webpack_require__(/*! ../../../helpers/AxiosURLSearchParams */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/helpers/AxiosURLSearchParams.js");
-
-module.exports = typeof URLSearchParams !== 'undefined' ? URLSearchParams : AxiosURLSearchParams;
-
-
-/***/ }),
-
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/browser/index.js":
-/*!******************************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/browser/index.js ***!
-  \******************************************************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-module.exports = {
-  isBrowser: true,
-  classes: {
-    URLSearchParams: __webpack_require__(/*! ./classes/URLSearchParams */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/browser/classes/URLSearchParams.js"),
-    FormData: __webpack_require__(/*! ./classes/FormData */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/browser/classes/FormData.js"),
-    Blob: Blob
-  },
-  protocols: ['http', 'https', 'file', 'blob', 'url', 'data']
-};
-
-
-/***/ }),
-
-/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/index.js":
-/*!**********************************************************************************************************!*\
-  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/index.js ***!
-  \**********************************************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-module.exports = __webpack_require__(/*! ./node/ */ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/lib/platform/browser/index.js");
 
 
 /***/ }),
@@ -4484,22 +3786,6 @@ var bind = __webpack_require__(/*! ./helpers/bind */ "../../vendor/laravel/nova/
 
 var toString = Object.prototype.toString;
 
-// eslint-disable-next-line func-names
-var kindOf = (function(cache) {
-  // eslint-disable-next-line func-names
-  return function(thing) {
-    var str = toString.call(thing);
-    return cache[str] || (cache[str] = str.slice(8, -1).toLowerCase());
-  };
-})(Object.create(null));
-
-function kindOfTest(type) {
-  type = type.toLowerCase();
-  return function isKindOf(thing) {
-    return kindOf(thing) === type;
-  };
-}
-
 /**
  * Determine if a value is an Array
  *
@@ -4507,7 +3793,7 @@ function kindOfTest(type) {
  * @returns {boolean} True if value is an Array, otherwise false
  */
 function isArray(val) {
-  return Array.isArray(val);
+  return toString.call(val) === '[object Array]';
 }
 
 /**
@@ -4534,12 +3820,22 @@ function isBuffer(val) {
 /**
  * Determine if a value is an ArrayBuffer
  *
- * @function
  * @param {Object} val The value to test
  * @returns {boolean} True if value is an ArrayBuffer, otherwise false
  */
-var isArrayBuffer = kindOfTest('ArrayBuffer');
+function isArrayBuffer(val) {
+  return toString.call(val) === '[object ArrayBuffer]';
+}
 
+/**
+ * Determine if a value is a FormData
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an FormData, otherwise false
+ */
+function isFormData(val) {
+  return (typeof FormData !== 'undefined') && (val instanceof FormData);
+}
 
 /**
  * Determine if a value is a view on an ArrayBuffer
@@ -4552,7 +3848,7 @@ function isArrayBufferView(val) {
   if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
     result = ArrayBuffer.isView(val);
   } else {
-    result = (val) && (val.buffer) && (isArrayBuffer(val.buffer));
+    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
   }
   return result;
 }
@@ -4594,7 +3890,7 @@ function isObject(val) {
  * @return {boolean} True if value is a plain Object, otherwise false
  */
 function isPlainObject(val) {
-  if (kindOf(val) !== 'object') {
+  if (toString.call(val) !== '[object Object]') {
     return false;
   }
 
@@ -4603,50 +3899,34 @@ function isPlainObject(val) {
 }
 
 /**
- * Determine if a value is a empty Object
- *
- * @param {Object} val The value to test
- * @return {boolean} True if value is a empty Object, otherwise false
- */
-function isEmptyObject(val) {
-  return val && Object.keys(val).length === 0 && Object.getPrototypeOf(val) === Object.prototype;
-}
-
-/**
  * Determine if a value is a Date
  *
- * @function
  * @param {Object} val The value to test
  * @returns {boolean} True if value is a Date, otherwise false
  */
-var isDate = kindOfTest('Date');
+function isDate(val) {
+  return toString.call(val) === '[object Date]';
+}
 
 /**
  * Determine if a value is a File
  *
- * @function
  * @param {Object} val The value to test
  * @returns {boolean} True if value is a File, otherwise false
  */
-var isFile = kindOfTest('File');
+function isFile(val) {
+  return toString.call(val) === '[object File]';
+}
 
 /**
  * Determine if a value is a Blob
  *
- * @function
  * @param {Object} val The value to test
  * @returns {boolean} True if value is a Blob, otherwise false
  */
-var isBlob = kindOfTest('Blob');
-
-/**
- * Determine if a value is a FileList
- *
- * @function
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a File, otherwise false
- */
-var isFileList = kindOfTest('FileList');
+function isBlob(val) {
+  return toString.call(val) === '[object Blob]';
+}
 
 /**
  * Determine if a value is a Function
@@ -4669,27 +3949,14 @@ function isStream(val) {
 }
 
 /**
- * Determine if a value is a FormData
- *
- * @param {Object} thing The value to test
- * @returns {boolean} True if value is an FormData, otherwise false
- */
-function isFormData(thing) {
-  var pattern = '[object FormData]';
-  return thing && (
-    (typeof FormData === 'function' && thing instanceof FormData) ||
-    toString.call(thing) === pattern ||
-    (isFunction(thing.toString) && thing.toString() === pattern)
-  );
-}
-
-/**
  * Determine if a value is a URLSearchParams object
- * @function
+ *
  * @param {Object} val The value to test
  * @returns {boolean} True if value is a URLSearchParams object, otherwise false
  */
-var isURLSearchParams = kindOfTest('URLSearchParams');
+function isURLSearchParams(val) {
+  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
+}
 
 /**
  * Trim excess whitespace off the beginning and end of a string
@@ -4698,7 +3965,7 @@ var isURLSearchParams = kindOfTest('URLSearchParams');
  * @returns {String} The String freed of excess whitespace
  */
 function trim(str) {
-  return str.trim ? str.trim() : str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+  return str.trim ? str.trim() : str.replace(/^\s+|\s+$/g, '');
 }
 
 /**
@@ -4717,16 +3984,15 @@ function trim(str) {
  *  navigator.product -> 'NativeScript' or 'NS'
  */
 function isStandardBrowserEnv() {
-  var product;
-  if (typeof navigator !== 'undefined' && (
-    (product = navigator.product) === 'ReactNative' ||
-    product === 'NativeScript' ||
-    product === 'NS')
-  ) {
+  if (typeof navigator !== 'undefined' && (navigator.product === 'ReactNative' ||
+                                           navigator.product === 'NativeScript' ||
+                                           navigator.product === 'NS')) {
     return false;
   }
-
-  return typeof window !== 'undefined' && typeof document !== 'undefined';
+  return (
+    typeof window !== 'undefined' &&
+    typeof document !== 'undefined'
+  );
 }
 
 /**
@@ -4837,130 +4103,6 @@ function stripBOM(content) {
   return content;
 }
 
-/**
- * Inherit the prototype methods from one constructor into another
- * @param {function} constructor
- * @param {function} superConstructor
- * @param {object} [props]
- * @param {object} [descriptors]
- */
-
-function inherits(constructor, superConstructor, props, descriptors) {
-  constructor.prototype = Object.create(superConstructor.prototype, descriptors);
-  constructor.prototype.constructor = constructor;
-  props && Object.assign(constructor.prototype, props);
-}
-
-/**
- * Resolve object with deep prototype chain to a flat object
- * @param {Object} sourceObj source object
- * @param {Object} [destObj]
- * @param {Function|Boolean} [filter]
- * @param {Function} [propFilter]
- * @returns {Object}
- */
-
-function toFlatObject(sourceObj, destObj, filter, propFilter) {
-  var props;
-  var i;
-  var prop;
-  var merged = {};
-
-  destObj = destObj || {};
-  // eslint-disable-next-line no-eq-null,eqeqeq
-  if (sourceObj == null) return destObj;
-
-  do {
-    props = Object.getOwnPropertyNames(sourceObj);
-    i = props.length;
-    while (i-- > 0) {
-      prop = props[i];
-      if ((!propFilter || propFilter(prop, sourceObj, destObj)) && !merged[prop]) {
-        destObj[prop] = sourceObj[prop];
-        merged[prop] = true;
-      }
-    }
-    sourceObj = filter !== false && Object.getPrototypeOf(sourceObj);
-  } while (sourceObj && (!filter || filter(sourceObj, destObj)) && sourceObj !== Object.prototype);
-
-  return destObj;
-}
-
-/*
- * determines whether a string ends with the characters of a specified string
- * @param {String} str
- * @param {String} searchString
- * @param {Number} [position= 0]
- * @returns {boolean}
- */
-function endsWith(str, searchString, position) {
-  str = String(str);
-  if (position === undefined || position > str.length) {
-    position = str.length;
-  }
-  position -= searchString.length;
-  var lastIndex = str.indexOf(searchString, position);
-  return lastIndex !== -1 && lastIndex === position;
-}
-
-
-/**
- * Returns new array from array like object or null if failed
- * @param {*} [thing]
- * @returns {?Array}
- */
-function toArray(thing) {
-  if (!thing) return null;
-  if (isArray(thing)) return thing;
-  var i = thing.length;
-  if (!isNumber(i)) return null;
-  var arr = new Array(i);
-  while (i-- > 0) {
-    arr[i] = thing[i];
-  }
-  return arr;
-}
-
-// eslint-disable-next-line func-names
-var isTypedArray = (function(TypedArray) {
-  // eslint-disable-next-line func-names
-  return function(thing) {
-    return TypedArray && thing instanceof TypedArray;
-  };
-})(typeof Uint8Array !== 'undefined' && Object.getPrototypeOf(Uint8Array));
-
-function forEachEntry(obj, fn) {
-  var generator = obj && obj[Symbol.iterator];
-
-  var iterator = generator.call(obj);
-
-  var result;
-
-  while ((result = iterator.next()) && !result.done) {
-    var pair = result.value;
-    fn.call(obj, pair[0], pair[1]);
-  }
-}
-
-function matchAll(regExp, str) {
-  var matches;
-  var arr = [];
-
-  while ((matches = regExp.exec(str)) !== null) {
-    arr.push(matches);
-  }
-
-  return arr;
-}
-
-var isHTMLForm = kindOfTest('HTMLFormElement');
-
-var hasOwnProperty = (function resolver(_hasOwnProperty) {
-  return function(obj, prop) {
-    return _hasOwnProperty.call(obj, prop);
-  };
-})(Object.prototype.hasOwnProperty);
-
 module.exports = {
   isArray: isArray,
   isArrayBuffer: isArrayBuffer,
@@ -4971,7 +4113,6 @@ module.exports = {
   isNumber: isNumber,
   isObject: isObject,
   isPlainObject: isPlainObject,
-  isEmptyObject: isEmptyObject,
   isUndefined: isUndefined,
   isDate: isDate,
   isFile: isFile,
@@ -4984,19 +4125,7 @@ module.exports = {
   merge: merge,
   extend: extend,
   trim: trim,
-  stripBOM: stripBOM,
-  inherits: inherits,
-  toFlatObject: toFlatObject,
-  kindOf: kindOf,
-  kindOfTest: kindOfTest,
-  endsWith: endsWith,
-  toArray: toArray,
-  isTypedArray: isTypedArray,
-  isFileList: isFileList,
-  forEachEntry: forEachEntry,
-  matchAll: matchAll,
-  isHTMLForm: isHTMLForm,
-  hasOwnProperty: hasOwnProperty
+  stripBOM: stripBOM
 };
 
 
@@ -8662,7 +7791,7 @@ module.exports = function xhrAdapter(config) {
         if (!request) {
           return;
         }
-        reject(!cancel || cancel.type ? new CanceledError(null, config, request) : cancel);
+        reject(!cancel || cancel.type ? new CanceledError(null, config, req) : cancel);
         request.abort();
         request = null;
       };
@@ -9022,13 +8151,6 @@ Axios.prototype.request = function request(configOrUrl, config) {
   }
 
   var paramsSerializer = config.paramsSerializer;
-
-  if (paramsSerializer !== undefined) {
-    validator.assertOptions(paramsSerializer, {
-      encode: validators.function,
-      serialize: validators.function
-    }, true);
-  }
 
   utils.isFunction(paramsSerializer) && (config.paramsSerializer = {serialize: paramsSerializer});
 
@@ -9862,7 +8984,7 @@ module.exports = __webpack_require__(/*! form-data */ "../../vendor/laravel/nova
 /***/ ((module) => {
 
 module.exports = {
-  "version": "0.28.1"
+  "version": "0.28.0"
 };
 
 /***/ }),
@@ -9982,20 +9104,12 @@ module.exports = function buildURL(url, params, options) {
 
   var _encode = options && options.encode || encode;
 
-  var serializeFn = options && options.serialize;
+  var serializerParams = utils.isURLSearchParams(params) ?
+    params.toString() :
+    new AxiosURLSearchParams(params, options).toString(_encode);
 
-  var serializedParams;
-
-  if (serializeFn) {
-    serializedParams = serializeFn(params, options);
-  } else {
-    serializedParams = utils.isURLSearchParams(params) ?
-      params.toString() :
-      new AxiosURLSearchParams(params, options).toString(_encode);
-  }
-
-  if (serializedParams) {
-    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+  if (serializerParams) {
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializerParams;
   }
 
   return url;
@@ -23099,7 +22213,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const headersToObject = (thing) => thing instanceof _AxiosHeaders_js__WEBPACK_IMPORTED_MODULE_0__["default"] ? { ...thing } : thing;
+const headersToObject = (thing) => thing instanceof _AxiosHeaders_js__WEBPACK_IMPORTED_MODULE_0__["default"] ? thing.toJSON() : thing;
 
 /**
  * Config-specific merge-function which creates a new config-object
@@ -23504,7 +22618,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   VERSION: () => (/* binding */ VERSION)
 /* harmony export */ });
-const VERSION = "1.6.8";
+const VERSION = "1.6.7";
 
 /***/ }),
 
@@ -25625,6 +24739,17 @@ const isThenable = (thing) =>
   isThenable
 });
 
+
+/***/ }),
+
+/***/ "../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/package.json":
+/*!*************************************************************************************************!*\
+  !*** ../../vendor/laravel/nova/node_modules/@inertiajs/inertia/node_modules/axios/package.json ***!
+  \*************************************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 
