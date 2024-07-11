@@ -47,13 +47,11 @@ export default {
     methods: {
         toggle(event) {
             event.stopPropagation();
-
             var data = {
                 'resource_id': this.resource.id.value,
                 'resource_name': this.resourceName,
-                'old_value': this.field.value,
+                'attribute': this.field.attribute,
                 'new_value': !this.new_value,
-                'resource': this.resource
             }
             Nova.request().post('/naif/toggle-switch-field/update-toggle', data)
                 .then(function (response) {

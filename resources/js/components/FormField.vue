@@ -14,6 +14,7 @@
                 :placeholder="field.name"
                 v-model="value"
                 v-bind:true-value="1" v-bind:false-value="0"
+
             />
         </template>
     </DefaultField>
@@ -33,9 +34,9 @@ export default {
 
         setInitialValue() {
             var field_value = false;
-            if (this.field.value === '1' || this.field.value === 1 || this.field.value === true){
+            if (this.field.value === '1' || this.field.value === 1 || this.field.value === true) {
                 field_value = 1;
-            } else{
+            } else {
                 field_value = 0;
             }
             this.value = field_value || 0
@@ -46,9 +47,9 @@ export default {
          */
         fill(formData) {
             var field_value = false;
-            if (this.value === '1' || this.value === 1 || this.value === true){
+            if (this.value === '1' || this.value === 1 || this.value === true) {
                 field_value = 1;
-            } else{
+            } else {
                 field_value = 0;
             }
             formData.append(this.fieldAttribute, field_value || 0)
