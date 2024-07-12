@@ -26,6 +26,7 @@
             v-bind:true-value="1" v-bind:false-value="0"
             :checked="field.value"
             @click="toggle"
+            :disabled="disabled()"
         />
     </div>
 
@@ -45,6 +46,13 @@ export default {
         },
     },
     methods: {
+        disabled() {
+            if (this.field.extraAttributes && this.field.extraAttributes.readonly) {
+                this.field.color = '#DADFE4';
+                return true;
+            }
+            return false;
+        },
         toggle(event) {
             event.stopPropagation();
             var data = {
@@ -62,6 +70,5 @@ export default {
                 }.bind(this));
         },
     }
-
 }
 </script>

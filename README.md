@@ -4,10 +4,10 @@ For Toggle Switch Field for Nova 3 go to
 https://github.com/naifalshaye/toggle-switch
 
 ## Features:
- - Set custom color using hex color code
- - Toggle or Icon align. Default (left)
- - Toggle Switch in Index to update value instead of icons. Default (true)
- - Toggle Switch in Detail to update value instead of icons. Default (true)
+ - Set custom color using hex color code.
+ - Toggle in Index and details to update value instead of icons. Default (true).
+ - Allow multiple toggles in same resource.
+ - Allow Disabled toggle (readonly) with Gray color.
 
 ### Requirements
 - PHP 8.0 or higher
@@ -38,7 +38,6 @@ Add the field to Nova Resource
         return [
            ToggleSwitchField::make('Toggle','toggle')
                 ->color('#3AB95A')
-                ->toggleAlign('center')
                 ->indexToggle(false)
                 ->detailToggle(false),
         ];
@@ -49,42 +48,13 @@ Add the field to Nova Resource
 ### Custom hex color code
 <img src="screenshots/img.png" width="150"><br>
 
-### Detail Page Toggle Switch On
-<img src="screenshots/detail-toggle-on.png" width="400"><br>
-<img src="screenshots/dark-detail-toggle-on.png" width="400"><br>
+<img src="screenshots/form.png" width="400"><br>
 
-### Detail Page Toggle Switch Off
-<img src="screenshots/detail-toggle-off.png" width="400"><br>
-<img src="screenshots/dark-detail-toggle-off.png" width="400"><br>
+<img src="screenshots/details.png" width="400"><br>
+<img src="screenshots/details-dark.png" width="400"><br>
 
-### Detail Page Icons On
-<img src="screenshots/detail-on.png" width="100"><br>
-<img src="screenshots/dark-detail-on.jpg" width="100"><br>
-
-### Detail Page Icons Off
-<img src="screenshots/detail-off.png" width="100"><br>
-<img src="screenshots/dark-detail-off.png" width="100"><br>
-
-
-### Edit Page Toggle Switch On
-<img src="screenshots/img_1.png" width="400"><br>
-<img src="screenshots/on.png" width="100"><br>
-<img src="screenshots/dark-on.png" width="100"><br>
-
-### Edit Page Toggle Switch Off
-<img src="screenshots/img_2.png" width="400"><br>
-<img src="screenshots/off.png" width="100"><br>
-<img src="screenshots/dark-off.png" width="100"><br>
-
-
-### Index Page Toggle Switch
-<img src="screenshots/index-toggle.png" width="100"><br>
-<img src="screenshots/dark-index-toggle.png" width="100"><br>
-
-### Index Page icons 
-<img src="screenshots/index.png" width="100"><br>
-<img src="screenshots/dark-index.png" width="100"><br>
-
+<img src="screenshots/index.png" width="400"><br>
+<img src="screenshots/index-dark.png" width="400"><br>
 
 
 ## Support:

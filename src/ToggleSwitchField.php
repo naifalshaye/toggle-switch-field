@@ -13,14 +13,6 @@ class ToggleSwitchField extends Field
      */
     public $component = 'toggle-switch-field';
 
-    public function toggleAlign($align = 'left')
-    {
-        $align = 'text-'.$align;
-        return $this->withMeta([
-            'toggle_align' => $align
-        ]);
-    }
-
     public function color($color)
     {
         if (isset($color)) {
