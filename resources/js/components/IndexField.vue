@@ -20,7 +20,7 @@
             :id="field.attribute"
             type="checkbox"
             :class="'custom-color'"
-            :style.checked="this.field.color ? 'color:' +  this.field.color :  'color:#3AB95A;'"
+            :style.checked="this.field.color ? 'color:' +  this.field.color :  'color:#3AB95A !important;'"
             :placeholder="field.name"
             v-model="new_value"
             v-bind:true-value="1" v-bind:false-value="0"
