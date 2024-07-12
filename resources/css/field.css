@@ -7,6 +7,7 @@
     border: 1px solid #DADFE4 !important;
     border-radius: 50px;
     transition-duration: 200ms;
+
 }
 .custom-color:after {
     content: "";
@@ -15,7 +16,7 @@
     left: 1px;
     width: 26px;
     height: 26px;
-    background-color: #ffffff !important;
+
     border-radius: 50%;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2) !important;
     transition-duration: 200ms;
@@ -27,22 +28,19 @@
 }
 .custom-color:disabled {
     cursor: not-allowed;
-    color: #ccc !important;
+    color: #fff !important;
+    background-color: #ccc !important;
 
 }
 .custom-color:disabled:checked {
     cursor: not-allowed;
-
 }
 .custom-color:disabled:after {
     box-shadow: none !important;
-    color: #ccc !important;
-    /*background-color: #ccc !important;*/
+    background-color: #fff !important;
 
 }
 .custom-color:disabled:not(.checked) {
     box-shadow: none !important;
-    color: #ccc !important;
-    background-color: #ccc !important;
 
 }
