@@ -45,17 +45,12 @@ Add the field to Nova Resource
 ```
 
 ## Screenshots
-### Custom hex color code
+#### Custom hex color code
 <img src="screenshots/img.png" width="150"><br>
-
-<img src="screenshots/form.png" width="400"><br>
-
-<img src="screenshots/details.png" width="400"><br>
-<img src="screenshots/details-dark.png" width="400"><br>
-
 <img src="screenshots/index.png" width="400"><br>
 <img src="screenshots/index-dark.png" width="400"><br>
-
+<img src="screenshots/details-form.png" width="400"><br>
+<img src="screenshots/index-dark.png" width="400"><br>
 
 ## Support:
 naif@naif.io

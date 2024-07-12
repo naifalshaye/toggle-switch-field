@@ -1,10 +1,10 @@
 .custom-color {
     position: relative;
-    appearance: none;
-    outline: none;
+    appearance: none !important;
+    outline: none !important;
     width: 50px;
     height: 30px;
-    border: 1px solid;
+    border: 1px solid #DADFE4 !important;
     border-radius: 50px;
     transition-duration: 200ms;
 }
@@ -15,26 +15,34 @@
     left: 1px;
     width: 26px;
     height: 26px;
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     border-radius: 50%;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2) !important;
     transition-duration: 200ms;
 }
 .custom-color:checked:after {
     left: 20px;
-    box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05) !important;
 
 }
 .custom-color:disabled {
     cursor: not-allowed;
-    background-color: #DADFE4;
+    color: #ccc !important;
 
 }
 .custom-color:disabled:checked {
     cursor: not-allowed;
-    background-color: #ffffff;
 
 }
 .custom-color:disabled:after {
-    box-shadow: none;
+    box-shadow: none !important;
+    color: #ccc !important;
+    /*background-color: #ccc !important;*/
+
+}
+.custom-color:disabled:not(.checked) {
+    box-shadow: none !important;
+    color: #ccc !important;
+    background-color: #ccc !important;
+
 }
