@@ -10,12 +10,12 @@
                 :id="field.attribute"
                 type="checkbox"
                 :class="'custom-color'"
-                :style.checked="this.field.color ? 'color:' +  this.field.color :  'color:#3AB95A;'"
+                :style.unchecked="this.field.color ? 'background-color:' +  this.field.color :  'background-color:#3AB95A;'"
                 :placeholder="field.name"
                 v-model="value"
                 v-bind:true-value="1"
                 v-bind:false-value="0"
-                :disabled="disabled()"
+                :disabled="isDisabled"
             />
         </template>
     </DefaultField>
@@ -27,22 +27,22 @@ import {FormField, HandlesValidationErrors} from 'laravel-nova'
 export default {
     mixins: [FormField, HandlesValidationErrors],
     props: ['resourceName', 'resourceId', 'field'],
-
-    methods: {
-        disabled() {
+    computed: {
+        isDisabled() {
             if (this.field.extraAttributes && this.field.extraAttributes.readonly) {
                 this.field.color = '#DADFE4';
                 return true;
             }
             return false;
         },
+    },
+    methods: {
         /*
          * Set the initial, internal value for the field.
          */
         setInitialValue() {
             this.value = this.field.value === '1' || this.field.value === 1 || this.field.value === true ? 1 : 0;
         },
-
         /**
          * Fill the given FormData object with the field's internal value.
          */

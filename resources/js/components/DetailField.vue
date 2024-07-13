@@ -24,13 +24,13 @@
                     :id="field.attribute"
                     type="checkbox"
                     :class="'custom-color'"
-                    :style.checked="this.field.color ? 'color:' +  this.field.color :  'color:#3AB95A;'"
+                    :style.unchecked="this.field.color ? 'background-color:' +  this.field.color :  'background-color:#3AB95A;'"
                     :placeholder="field.name"
                     v-model="new_value"
                     v-bind:true-value="1" v-bind:false-value="0"
                     :checked="field.value"
                     @click="toggle"
-                    :disabled="disabled()"
+                    :disabled="isDisabled"
                 />
             </div>
         </template>
@@ -49,15 +49,15 @@ export default {
         fieldValue() {
             return this.field.displayedAs || this.field.value
         },
-    },
-    methods: {
-        disabled() {
+        isDisabled() {
             if (this.field.extraAttributes && this.field.extraAttributes.readonly) {
                 this.field.color = '#DADFE4';
                 return true;
             }
             return false;
         },
+    },
+    methods: {
         toggle(event) {
             event.stopPropagation();
             var data = {

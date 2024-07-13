@@ -45,7 +45,7 @@
                 :id="field.attribute"
                 type="checkbox"
                 class="custom-color"
-                :style="checkboxStyle"
+                :style.unchecked="this.field.color ? 'background-color:' +  this.field.color :  'background-color:#3AB95A;'"
                 :placeholder="field.name"
                 v-model="new_value"
                 :true-value="1"
@@ -67,11 +67,6 @@ export default {
         };
     },
     computed: {
-        checkboxStyle() {
-            return {
-                color: this.field.color || '#3AB95A !important',
-            };
-        },
         isDisabled() {
             if (this.field.extraAttributes && this.field.extraAttributes.readonly) {
                 this.field.color = '#DADFE4';
@@ -103,7 +98,3 @@ export default {
     },
 };
 </script>
-
-<style scoped>
-/* Add any scoped styles here */
-</style>

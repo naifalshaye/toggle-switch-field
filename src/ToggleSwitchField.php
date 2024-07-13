@@ -19,11 +19,14 @@ class ToggleSwitchField extends Field
             $isColorHexCode = preg_match('/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/', $color) === 1;
             if ($isColorHexCode) {
                 return $this->withMeta([
-                    'color' => $color
+                    'background-color' => $color,
+                    'color' => $color,
                 ]);
             }
             return $this->withMeta([
-                'color' => '#3AB95A'
+                'background-color' => $color,
+                'color' => '#3AB95A',
+
             ]);
         }
     }
