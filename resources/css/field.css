@@ -6,6 +6,7 @@
     height: 29px;
     border-radius: 50px;
     transition-duration: 200ms;
+    margin-top: 5px;
 }
 .custom-color:after {
     content: "";
