@@ -7,4 +7,4 @@ mix
   .js('resources/js/field.js', 'js')
   .vue({ version: 3 })
   .css('resources/css/field.css', 'css')
-  .nova('naif/toggle-switch-field')
+  .nova('nova-vendor/naif/toggle-switch-field')

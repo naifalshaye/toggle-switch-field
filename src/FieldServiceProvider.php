@@ -54,7 +54,7 @@ class FieldServiceProvider extends ServiceProvider
 
         Route::middleware(['nova'])
             ->namespace('Naif\toggle-switch-field\Http\Controllers')
-            ->prefix('naif/toggle-switch-field')
+            ->prefix('nova-vendor/naif/toggle-switch-field')
             ->group(__DIR__.'/../routes/api.php');
     }
 }

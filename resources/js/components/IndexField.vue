@@ -87,7 +87,7 @@ export default {
             };
 
             Nova.request()
-                .post('/naif/toggle-switch-field/update-toggle', data)
+                .post('/nova-vendor/naif/toggle-switch-field/update-toggle', data)
                 .then(() => {
                     this.new_value = updatedValue;
                 })

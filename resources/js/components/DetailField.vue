@@ -66,7 +66,7 @@ export default {
                 'attribute': this.field.attribute,
                 'new_value': !this.new_value,
             }
-            Nova.request().post('/naif/toggle-switch-field/update-toggle', data)
+            Nova.request().post('/nova-vendor/naif/toggle-switch-field/update-toggle', data)
                 .then(function (response) {
 
                 }.bind(this))
