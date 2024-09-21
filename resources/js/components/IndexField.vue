@@ -63,7 +63,7 @@ export default {
     props: ['resource', 'resourceName', 'field'],
     data() {
         return {
-            new_value: this.field.value,
+            new_value: Number(this.field.value),
         };
     },
     computed: {
